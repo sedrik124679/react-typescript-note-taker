@@ -8,17 +8,17 @@ import NoteCard from "../components/NoteCard";
 import EditTagsModal from "../components/EditTagsModal";
 
 const NoteList = () => {
-    const {availableTags, notes, onDeleteTag, onUpdateTag} = useNoteTaker();
+    const {availableTags, notesWithTags, onDeleteTag, onUpdateTag} = useNoteTaker();
 
     const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
     const [title, setTitle] = useState('');
     const [editTagsModalIsOpen, setEditTagsModalIsOpen] = useState(false);
 
     const filteredNotes = useMemo(() => {
-        return notes.filter(note => {
+        return notesWithTags.filter(note => {
             return (title === "" || note.title.toLowerCase().includes(title.toLowerCase())) && (selectedTags.length === 0 || selectedTags.every(tag => note.tags.some(noteTag => noteTag.id === tag.id)))
         })
-    }, [title, selectedTags, notes])
+    }, [title, selectedTags, notesWithTags])
 
     return (
         <>

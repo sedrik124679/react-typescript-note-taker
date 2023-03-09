@@ -15,7 +15,6 @@ type NoteTakerContext = {
     addTag: (tag: Tag) => void,
     onCreateNote: (data: NoteData) => void,
     notesWithTags: SimplifiedNoteProps[],
-    notes: RawNote[],
     availableTags: Tag[],
 }
 
@@ -88,7 +87,6 @@ export function NoteTakerProvider({children}: NoteTakerContextProps) {
             addTag,
             onCreateNote,
             notesWithTags,
-            notes: notesWithTags,
             availableTags: tags,
             onDeleteTag: deleteTag,
             onUpdateTag: updateTag
